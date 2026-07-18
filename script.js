@@ -151,16 +151,31 @@ function closeLightbox() {
     lightbox.style.display = "none";
 }
 
-// --- FUNGSI COPY REKENING ---
+// --- FUNGSI COPY REKENING & DOWNLOAD QRIS ---
 function copyRekening(elementId) {
     const textToCopy = document.getElementById(elementId).innerText;
     navigator.clipboard.writeText(textToCopy).then(() => {
-        showToast();
+        // Tampilkan pesan khusus untuk copy rekening
+        showToast("Nomor rekening berhasil disalin ✨");
     });
 }
 
-function showToast() {
+function downloadQRIS() {
+    // Fungsi ini bikin browser otomatis download gambar QRIS ke HP tamu
+    const link = document.createElement('a');
+    link.href = 'gambar-qris-lo.png'; // NAMA FILE GAMBAR HARUS SAMA KAYAK DI HTML
+    link.download = 'QRIS_Pernikahan.png'; // Nama file pas ke-download di HP
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    
+    // Tampilkan pesan khusus untuk download QRIS
+    showToast("QRIS berhasil disimpan ke galeri ✨");
+}
+
+function showToast(message) {
     const toast = document.getElementById("toast");
+    toast.innerText = message; // Teksnya sekarang dinamis menyesuaikan aksi
     toast.className = "toast show";
     setTimeout(function(){ toast.className = toast.className.replace("show", ""); }, 3000);
 }
