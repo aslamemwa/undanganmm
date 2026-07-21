@@ -336,10 +336,60 @@ p { line-height: 1.6; font-size: 0.95rem; }
 }
 #wish-form input:focus, #wish-form textarea:focus { outline: none; border-color: var(--c-gold); }
 .wishes-list { margin-top: 1.5rem; max-height: 250px; overflow-y: auto; padding-right: 10px; }
-.wish-card { padding: 12px 0; border-bottom: 1px solid var(--c-beige); }
-.wish-card h4 { font-size: 1rem; margin-bottom: 3px; }
-.wish-card .time { font-size: 0.75rem; color: var(--c-soft-brown); margin-bottom: 5px; }
+/* --- DESAIN KOTAK KOMENTAR (PROFESIONAL & ELEGAN) --- */
+.wish-card {
+    background: var(--c-white);
+    padding: 16px 20px;
+    border-radius: 12px;
+    margin-bottom: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04); /* Bayangan super lembut biar kelihatan melayang/3D */
+    border-left: 4px solid var(--c-gold); /* Garis aksen elegan di sebelah kiri */
+    text-align: left; /* Teks rata kiri biar gampang dibaca */
+    transition: transform 0.3s ease;
+}
 
+/* Efek pas kotaknya disentuh/di-scroll */
+.wish-card:hover {
+    transform: translateY(-2px);
+}
+
+/* Styling Nama Pengirim (Tegas & Jelas) */
+.wish-card h4 {
+    margin: 0;
+    font-family: var(--f-sans); /* Pakai font modern */
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--c-brown);
+    text-transform: capitalize;
+}
+
+/* Styling Tanggal & Waktu (Rapi & Pemisah) */
+.wish-card .time {
+    margin: 4px 0 10px 0;
+    font-size: 0.75rem;
+    color: var(--c-soft-brown);
+    font-style: italic;
+    border-bottom: 1px solid var(--c-beige); /* Garis batas tipis antara nama dan isi ucapan */
+    padding-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+/* Nambahin icon jam kecil sebelum teks waktu via CSS */
+.wish-card .time::before {
+    content: '\f017'; /* Unicode untuk icon FontAwesome Clock */
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 400;
+}
+
+/* Styling Isi Ucapan (Nyaman Dibaca) */
+.wish-card p:last-child {
+    margin: 0;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--c-brown);
+}
 /* Animations & Petals */
 .slide-up { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.5, 0, 0, 1); }
 .slide-up.visible { opacity: 1; transform: translateY(0); }
@@ -513,4 +563,28 @@ body::after {
 .developer-credit a:hover {
     color: var(--c-gold-light);
     letter-spacing: 3px; 
+}
+
+/* --- SCROLL BAR KHUSUS DAFTAR UCAPAN --- */
+#wishes-list {
+    max-height: 400px; /* Atur tinggi maksimal kotaknya (bisa lu ubah sesuai selera) */
+    overflow-y: auto;  /* Memunculkan scroll kalau komennya banyak */
+    padding-right: 10px; /* Kasih jarak biar scrollbar nggak nempel ke teks */
+    margin-top: 1.5rem;
+}
+
+/* Bikin scrollbar-nya estetik (Custom Scrollbar) biar nggak kaku bawaan browser */
+#wishes-list::-webkit-scrollbar {
+    width: 6px;
+}
+#wishes-list::-webkit-scrollbar-track {
+    background: var(--c-beige); /* Warna jalurnya nyatu sama background */
+    border-radius: 10px;
+}
+#wishes-list::-webkit-scrollbar-thumb {
+    background: var(--c-soft-brown); /* Warna scroll-nya */
+    border-radius: 10px;
+}
+#wishes-list::-webkit-scrollbar-thumb:hover {
+    background: var(--c-brown);
 }
