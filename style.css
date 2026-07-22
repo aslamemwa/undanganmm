@@ -368,3 +368,29 @@ body::after { content: ""; position: fixed; top: 0; left: 0; width: 100vw; heigh
     position: relative;
     z-index: 6;
 }
+
+
+
+/* Fitur Read More */
+.more-text {
+    display: none; /* Disembunyikan dari awal */
+}
+.story-text {
+    margin-bottom: 5px;
+    line-height: 1.5;
+}
+.read-more-btn {
+    background: none;
+    border: none;
+    color: var(--c-gold);
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: var(--f-sans);
+    text-decoration: underline;
+    transition: color 0.3s ease;
+    padding: 5px 0;
+}
+.read-more-btn:hover {
+    color: var(--c-gold-hover);
+}
