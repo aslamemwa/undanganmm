@@ -104,14 +104,27 @@ const bgMusic = document.getElementById('bg-music');
 const musicCtrl = document.getElementById('music-control');
 
 function openInvitation() {
+    // 1. Naikkan cover dan buka kunci scroll
     document.getElementById('cover').style.transform = 'translateY(-100vh)';
     document.body.classList.remove('locked');
+    
+    // 2. Mainkan musik
     bgMusic.play().then(() => {
         isPlaying = true;
         musicCtrl.style.display = 'block'; 
         musicCtrl.style.animationPlayState = 'running'; 
     }).catch(error => console.log("Auto-play prevented by browser"));
+    
+    // 3. Tampilkan tombol kontrol scroll
     document.getElementById('autoscroll-control').style.display = 'block';
+
+    // 4. AUTO-SCROLL PROFESIONAL (Berjalan otomatis setelah 1.5 detik)
+    setTimeout(() => {
+        // Cek dulu, kalau tamu belum nekan tombol apa-apa, jalankan scroll
+        if (!isAutoScrolling) {
+            toggleAutoScroll();
+        }
+    }, 1500); // 1500 milidetik = 1.5 detik jeda estetik
 }
 
 function toggleMusic() {
