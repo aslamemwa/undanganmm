@@ -229,17 +229,57 @@ p { line-height: 1.6; font-size: 0.95rem; }
 .form-wrapper { max-width: 600px; margin: 0 auto; padding: 1.5rem; border-radius: 15px; }
 #wish-form input, #wish-form textarea { width: 100%; padding: 14px 15px; margin-bottom: 12px; border: 1px solid var(--c-gold-light); border-radius: 8px; font-family: var(--f-sans); font-size: 16px; background-color: rgba(255,255,255,0.8); }
 #wish-form input:focus, #wish-form textarea:focus { outline: none; border-color: var(--c-gold); }
-#wishes-list { max-height: 400px; overflow-y: auto; padding-right: 10px; margin-top: 1.5rem; }
+/* Batasi ketinggian kolom komentar biar sisa teks kepotong & bisa di-scroll */
+#wishes-list { 
+    max-height: 280px; /* Ini angka sakti buat nampilin 2.5 sampai 3 komentar */
+    overflow-y: auto; 
+    padding-right: 10px; 
+    margin-top: 1.5rem; 
+    padding-bottom: 10px; /* Kasih ruang sedikit di bawah biar nggak mepet banget */
+}
 #wishes-list::-webkit-scrollbar { width: 6px; }
 #wishes-list::-webkit-scrollbar-track { background: var(--c-beige); border-radius: 10px; }
 #wishes-list::-webkit-scrollbar-thumb { background: var(--c-soft-brown); border-radius: 10px; }
 
-/* UPGRADE 3: Pengecilan Dimensi Kolom Komentar */
-.wish-card { background: var(--c-white); padding: 10px 14px; border-radius: 10px; margin-bottom: 10px; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03); border-left: 3px solid var(--c-gold); text-align: left; }
-.wish-card h4 { margin: 0; font-size: 0.9rem; font-weight: 700; color: var(--c-brown); text-transform: capitalize; }
-.wish-card .time { margin: 2px 0 6px 0; font-size: 0.65rem; color: var(--c-soft-brown); font-style: italic; border-bottom: 1px solid var(--c-beige); padding-bottom: 5px; display: flex; align-items: center; gap: 4px; }
-.wish-card .time::before { content: '\f017'; font-family: 'Font Awesome 5 Free'; font-weight: 400; }
-.wish-card p:last-child { margin: 0; font-size: 0.85rem; line-height: 1.4; color: var(--c-brown); }
+/* UPGRADE 3: Desain Komentar (Bukan kotak kaku lagi, tapi ala elegan chat bubble) */
+.wish-card { 
+    background: linear-gradient(135deg, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.5) 100%);
+    padding: 15px 18px; 
+    border-radius: 16px 16px 16px 4px; /* Sudut kanan bawah agak lancip biar estetik */
+    margin-bottom: 15px; 
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03); 
+    border: 1px solid rgba(255, 255, 255, 0.8); 
+    text-align: left; 
+    position: relative;
+}
+.wish-card h4 { 
+    margin: 0; 
+    font-size: 0.95rem; 
+    font-weight: 700; 
+    color: var(--c-gold); /* Nama tamu jadi lebih menonjol */
+    text-transform: capitalize; 
+    letter-spacing: 0.5px;
+}
+.wish-card .time { 
+    margin: 3px 0 8px 0; 
+    font-size: 0.65rem; 
+    color: var(--c-soft-brown); 
+    font-style: italic; 
+    display: flex; 
+    align-items: center; 
+    gap: 5px; 
+}
+.wish-card .time::before { 
+    content: '\f017'; 
+    font-family: 'Font Awesome 5 Free'; 
+    font-weight: 400; 
+}
+.wish-card p:last-child { 
+    margin: 0; 
+    font-size: 0.9rem; 
+    line-height: 1.5; 
+    color: var(--c-brown); 
+}
 
 /* UPGRADE 4: Variasi Animasi Scroll Beragam */
 .anim { opacity: 0; transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
